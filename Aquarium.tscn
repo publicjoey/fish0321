@@ -1,11 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://brchto653e73v"]
 
-[ext_resource type="Script" path="res://aquarium.gd" id="1_a0ukm"]
+[ext_resource type="Script" path="res://Aquarium.gd" id="1_a0ukm"]
 [ext_resource type="PackedScene" uid="uid://cerruhoyvi86e" path="res://Fish.tscn" id="2_cnfrk"]
 
 [node name="Aquarium" type="Node2D"]
 script = ExtResource("1_a0ukm")
 fish_scene = ExtResource("2_cnfrk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 1, 0, 0.333333)
+offset_right = 1175.0
+offset_bottom = 677.0
 
 [node name="Fish" parent="." instance=ExtResource("2_cnfrk")]
 
