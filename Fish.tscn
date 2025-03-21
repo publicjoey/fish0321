@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cerruhoyvi86e"]
+
+[ext_resource type="Texture2D" uid="uid://86h5lnuh7iv4" path="res://art/enemySwimming_1.png" id="1_7kyfb"]
+[ext_resource type="Script" path="res://Fish.gd" id="1_byqsf"]
+[ext_resource type="Texture2D" uid="uid://cvt1t8hpaggp6" path="res://art/enemySwimming_2.png" id="2_i75m5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sq5r6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7kyfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i75m5")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_upm0y"]
+radius = 47.0
+height = 162.0
+
+[node name="Fish" type="Node2D"]
+script = ExtResource("1_byqsf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sq5r6")
+animation = &"swim"
+frame_progress = 0.381252
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_upm0y")
