@@ -43,12 +43,12 @@ func _start_moving():
 	direction *= -1
 	_start_moving()
 	
-#func _input_event(viewport, event, shape_idx):
+func _input_event(viewport, event, shape_idx):
 	#if event is InputEventMouseButton and event.pressed:
 		#queue_free()  # 點擊後刪除魚
 
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+#func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	#pass # Replace with function body.
 	if event is InputEventMouseButton and event.pressed:
 		queue_free()  # 點擊後刪除魚
