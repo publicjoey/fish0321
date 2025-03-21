@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var speed: float = 50.0  # 魚的移動速度
+@export var speed: float = 20.0  # 魚的移動速度
 @export var move_time: float = 3.0  # 每次移動的時間
 
 var direction: int  # 移動方向 (-1=左, 1=右)
@@ -11,6 +11,9 @@ func _ready():
 	randomize()
 	direction = [-1, 1].pick_random()  # 隨機選擇向左或向右
 	_start_moving()
+	
+		# 讓魚可以偵測滑鼠點擊
+	set_process_input(true)
 
 func _start_moving():
 	# 取得水族箱大小（假設水族箱是父節點）
@@ -37,3 +40,13 @@ func _start_moving():
 	# 反轉方向
 	direction *= -1
 	_start_moving()
+	
+#func _input_event(viewport, event, shape_idx):
+	#if event is InputEventMouseButton and event.pressed:
+		#queue_free()  # 點擊後刪除魚
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#pass # Replace with function body.
+	if event is InputEventMouseButton and event.pressed:
+		queue_free()  # 點擊後刪除魚

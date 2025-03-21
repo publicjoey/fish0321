@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var fish_scene: PackedScene  # 魚的預載場景
-@export var fish_count: int = 5  # 初始魚的數量
+@export var fish_count: int = 15  # 初始魚的數量
 
 func _ready():
 	randomize()
