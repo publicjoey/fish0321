@@ -1,34 +1,20 @@
 extends Node2D
 
-@export var speed: float = 50.0  # 魚的移動速度
-@export var move_time: float = 3.0  # 每次移動的時間
-
-var target_position: Vector2  # 目標位置
-var tween: Tween  # Tween 動畫物件
+@export var fish_scene: PackedScene  # 魚的預載場景
+@export var fish_count: int = 5  # 初始魚的數量
 
 func _ready():
 	randomize()
-	_start_moving()
+	_spawn_fish()
 
-func _start_moving():
-	# 取得水族箱大小（假設水族箱是父節點）
-	var aquarium_size = get_parent().get_viewport_rect().size
+func _spawn_fish():
+	var aquarium_size = get_viewport_rect().size  # 取得水族箱大小
 
-	# 隨機選擇一個目標位置
-	target_position = Vector2(
-		randf_range(50, aquarium_size.x - 50),
-		randf_range(50, aquarium_size.y - 50)
-	)
+	for i in range(fish_count):
+		var fish = fish_scene.instantiate()  # 建立魚
+		fish.position = Vector2(
+			randf_range(50, aquarium_size.x - 50),
+			randf_range(50, aquarium_size.y - 50)
+		)  # 隨機位置
 
-	# 讓魚面向移動方向
-	look_at(target_position)
-
-	# 使用 Tween 平滑移動
-	if tween:
-		tween.kill()  # 停止舊的 Tween
-	tween = create_tween()
-	tween.tween_property(self, "position", target_position, move_time).set_trans(Tween.TRANS_LINEAR)
-
-	# 動畫完成後再找下一個位置
-	await tween.finished
-	_start_moving()
+		get_node("FishContainer").add_child(fish)  # 加入場景

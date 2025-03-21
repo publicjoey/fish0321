@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var speed: float = 50.0  # 魚的移動速度
-@export var move_time: float = 3.0  # 每次移動的時間
+@export var speed: float = 250.0  # 魚的移動速度
+@export var move_time: float = 1.0  # 每次移動的時間
 
 var target_position: Vector2  # 目標位置
 var tween: Tween  # Tween 動畫物件
