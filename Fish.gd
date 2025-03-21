@@ -14,6 +14,8 @@ func _ready():
 	
 		# 讓魚可以偵測滑鼠點擊
 	set_process_input(true)
+	
+	$AnimatedSprite2D.play()
 
 func _start_moving():
 	# 取得水族箱大小（假設水族箱是父節點）
