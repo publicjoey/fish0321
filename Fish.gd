@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var speed: float = 20.0  # 魚的移動速度
-@export var move_time: float = 5.0  # 每次移動的時間
+@export var speed: float = 50.0  # 魚的移動速度
+@export var move_time: float = 3.0  # 每次移動的時間
 
 var direction: int  # 移動方向 (-1=左, 1=右)
 var target_x: float  # 目標 X 座標
@@ -11,8 +11,6 @@ func _ready():
 	randomize()
 	direction = [-1, 1].pick_random()  # 隨機選擇向左或向右
 	_start_moving()
-	
-	$AnimatedSprite2D.play()
 
 func _start_moving():
 	# 取得水族箱大小（假設水族箱是父節點）
@@ -32,8 +30,6 @@ func _start_moving():
 		tween.kill()
 	tween = create_tween()
 	tween.tween_property(self, "position:x", target_x, move_time).set_trans(Tween.TRANS_LINEAR)
-	
-	#$AnimatedSprite2D.play()
 
 	# 等待動畫結束後繼續
 	await tween.finished
@@ -41,8 +37,3 @@ func _start_moving():
 	# 反轉方向
 	direction *= -1
 	_start_moving()
-	
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	#pass # Replace with function body.
-	if event is InputEventMouseButton and event.pressed:
-		queue_free()  # 點擊後刪除魚
