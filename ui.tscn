@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://4d0j86sbscxe"]
+
+[ext_resource type="Script" path="res://change_background.gd" id="1_nhofc"]
+[ext_resource type="Script" path="res://ui.gd" id="1_sxtri"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_right = 17.0
+script = ExtResource("1_sxtri")
+
+[node name="AddFishButton" type="Button" parent="."]
+layout_mode = 1
+offset_right = 60.0
+offset_bottom = 31.0
+text = "加魚"
+
+[node name="AddSeaweedButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 80.0
+offset_right = 127.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "加草"
+
+[node name="ChangeBackgroundButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 144.0
+offset_right = 191.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "換背"
+script = ExtResource("1_nhofc")
+
+[connection signal="pressed" from="ChangeBackgroundButton" to="." method="_on_change_background_button_pressed"]
