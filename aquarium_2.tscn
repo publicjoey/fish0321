@@ -1,21 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bju0pxewsbynw"]
+[gd_scene load_steps=6 format=3 uid="uid://bju0pxewsbynw"]
 
 [ext_resource type="Script" path="res://aquarium_2.gd" id="1_1et8j"]
 [ext_resource type="Texture2D" uid="uid://cqiuvr4oie6ef" path="res://art/array.png" id="1_htw6v"]
 [ext_resource type="Texture2D" uid="uid://dl8nev755pj2c" path="res://backgrounds/bg1.png" id="2_dtxnt"]
 [ext_resource type="Texture2D" uid="uid://ycw3drwckcbe" path="res://backgrounds/bg2.png" id="3_e434f"]
+[ext_resource type="PackedScene" uid="uid://cerruhoyvi86e" path="res://Fish.tscn" id="5_myje3"]
 
 [node name="Aquarium2" type="Node2D"]
 script = ExtResource("1_1et8j")
 background_sprites = Array[Texture]([ExtResource("2_dtxnt"), ExtResource("3_e434f"), ExtResource("1_htw6v")])
-
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(0, 1, 0, 0.215686)
-custom_minimum_size = Vector2(375, 150)
-offset_left = -8.0
-offset_top = 35.0
-offset_right = 367.0
-offset_bottom = 185.0
+fish_scene = ExtResource("5_myje3")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(184, 131)
@@ -26,5 +20,9 @@ offset_left = 296.0
 offset_top = 3.0
 offset_right = 352.0
 offset_bottom = 27.0
+
+[node name="Fish" parent="." instance=ExtResource("5_myje3")]
+
+[node name="FishContainer" type="Node2D" parent="."]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

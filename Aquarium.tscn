@@ -27,13 +27,11 @@ vframes = 2
 visible = false
 
 [node name="Fish" parent="." instance=ExtResource("2_cnfrk")]
-visible = false
 
 [node name="SeaweedContainer" type="Node2D" parent="."]
 visible = false
 
 [node name="FishContainer" type="Node2D" parent="."]
-visible = false
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(55, 22)
