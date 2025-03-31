@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://mf754cm3cew8"]
+
+[ext_resource type="Script" path="res://fish_0327_ok.gd" id="1_m8rl8"]
+[ext_resource type="Texture2D" uid="uid://c8p0oc1aveqxe" path="res://art/fish1/0.png" id="2_0iwye"]
+[ext_resource type="Texture2D" uid="uid://0byinurrujrk" path="res://art/fish1/1.png" id="3_igdj3"]
+[ext_resource type="Texture2D" uid="uid://bnwqr51f8ntjn" path="res://art/fish1/2.png" id="4_o8qpo"]
+[ext_resource type="Texture2D" uid="uid://dv6ag8jaknq2u" path="res://art/fish1/3.png" id="5_tdpsk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72dl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0iwye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_igdj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_o8qpo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tdpsk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ge53p"]
+radius = 13.0
+
+[node name="fish_0327_ok" type="Node2D"]
+script = ExtResource("1_m8rl8")
+move_time = 22.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_72dl8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ge53p")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
